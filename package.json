@@ -1,0 +1,11 @@
+{
+  "name": "http-client.jsx",
+  "version": "0.0.0",
+  "description": "http client for Adobe ExtendedScript",
+  "main": "http-client.jsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Javier Blanco <jbgutierrez@gmail.com>",
+  "license": "MIT"
+}
