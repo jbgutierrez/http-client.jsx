@@ -2,7 +2,6 @@
   "name": "http-client.jsx",
   "version": "0.0.1",
   "description": "http client for Adobe ExtendedScript",
-  "main": "http-client.jsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

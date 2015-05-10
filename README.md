@@ -2,11 +2,23 @@
 
 Tiny http client for Photoshop
 
+## Install
+
+### npm
+
+```
+$ npm install --save http-client.jsx
+```
+
+### Download Latest Build
+
+[Download `lib/http-client.full.jsx`](https://raw.githubusercontent.com/jbgutierrez/http-client.jsx/master/lib/http-client.full.jsx)
+
 ## Usage
 
 ```javascript
 #target "photoshop"
-#include "http-client.full.jsx"
+#include "node_modules/http-client.jsx/lib/http-client.full.jsx"
 
 var client =
   new HttpClient('localhost', {
