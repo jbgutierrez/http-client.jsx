@@ -89,11 +89,14 @@
       ref2 = line.split(' '), version = ref2[0], statusCode = ref2[1], statusMessage = 3 <= ref2.length ? slice.call(ref2, 2) : [];
       statusMessage = statusMessage.join(' ');
       headers = {};
-      while (!/^\n/.test((line = this.socket.readln()))) {
+      while (!/^\n/.test(line = this.socket.readln())) {
         ref3 = line.split(':'), key = ref3[0], value = 2 <= ref3.length ? slice.call(ref3, 1) : [];
         headers[key] = value.join(':');
       }
       body = line.substring(1);
+      while (line = this.socket.readln()) {
+        body += line;
+      }
       response = {
         statusCode: +statusCode,
         statusMessage: statusMessage,

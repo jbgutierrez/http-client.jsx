@@ -51,10 +51,12 @@ class @HttpClient
     [version, statusCode, statusMessage...] = line.split ' '
     statusMessage = statusMessage.join ' '
     headers = {}
-    while not /^\n/.test (line = @socket.readln())
+    while not /^\n/.test line = @socket.readln()
       [key, value...] = line.split ':'
       headers[key] = value.join ':'
+
     body = line.substring 1
+    body+=line while line = @socket.readln()
 
     response = {
       statusCode: +statusCode

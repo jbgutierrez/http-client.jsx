@@ -29,6 +29,15 @@ class Server < Sinatra::Application
     ok ? "Pass" : 'Fail'
   end
 
+  get '/echo' do
+    data = request.media_type == "application/json" ? JSON.parse(request.body.read) : params
+    data.to_json
+  end
+
+  get '/10000-stars' do
+    "*" * 10000
+  end
+
   get '/timeout' do
     sleep 10
   end
