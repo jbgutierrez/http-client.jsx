@@ -10,6 +10,12 @@ Tiny http client for Photoshop
 $ npm install --save http-client.jsx
 ```
 
+### bower
+
+```
+$ bower install --save http-client.jsx
+```
+
 ### Download Latest Build
 
 [Download `lib/http-client.full.jsx`](https://raw.githubusercontent.com/jbgutierrez/http-client.jsx/master/lib/http-client.full.jsx)
