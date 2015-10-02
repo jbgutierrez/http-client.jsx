@@ -4,6 +4,7 @@ class @HttpClient
       encoding: 'binary'
       timeout: 10
       port: 80
+      debug: false
       headers:
         "User-Agent": "Adobe ExtendScript"
 
@@ -38,11 +39,15 @@ class @HttpClient
       options.headers[key] ?= value
     options.headers['Content-Length'] = options.body.length if options.body
 
-    msg = "#{verb} #{uri} HTTP/1.1\r\n"
+    msg = "#{verb} #{uri} HTTP/1.0\r\n"
     for header, value of options.headers
       msg += "#{header}: #{value}\r\n"
     msg += "\r\n"
     msg += "#{options.body}" if options.body
+
+    if @options.debug
+      $.writeln "REQUEST"
+      $.writeln body
 
     @socket.write msg
 
@@ -57,6 +62,10 @@ class @HttpClient
 
     body = line.substring 1
     body+=line while line = @socket.readln()
+
+    if @options.debug
+      $.writeln "RESPONSE"
+      $.writeln body
 
     response = {
       statusCode: +statusCode

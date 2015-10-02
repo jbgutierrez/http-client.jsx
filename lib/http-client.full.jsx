@@ -10,6 +10,7 @@
         encoding: 'binary',
         timeout: 10,
         port: 80,
+        debug: false,
         headers: {
           "User-Agent": "Adobe ExtendScript"
         }
@@ -71,7 +72,7 @@
       if (options.body) {
         options.headers['Content-Length'] = options.body.length;
       }
-      msg = verb + " " + uri + " HTTP/1.1\r\n";
+      msg = verb + " " + uri + " HTTP/1.0\r\n";
       ref1 = options.headers;
       for (header in ref1) {
         value = ref1[header];
@@ -80,6 +81,10 @@
       msg += "\r\n";
       if (options.body) {
         msg += "" + options.body;
+      }
+      if (this.options.debug) {
+        $.writeln("REQUEST");
+        $.writeln(body);
       }
       this.socket.write(msg);
       line = this.socket.readln();
@@ -96,6 +101,10 @@
       body = line.substring(1);
       while (line = this.socket.readln()) {
         body += line;
+      }
+      if (this.options.debug) {
+        $.writeln("RESPONSE");
+        $.writeln(body);
       }
       response = {
         statusCode: +statusCode,
